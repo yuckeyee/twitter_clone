@@ -5,6 +5,7 @@ ja:
     attributes:
       user:
         name: "ユーザ名"
+        avatar: "プロフィール画像"
         title: "タイトル"
         email: "メールアドレス"
         current_password: "現在のパスワード"
