@@ -1,0 +1,14 @@
+%nav.navbar.navbar-light.bg-light
+  %a.navbar-brand{href: "/"} Twitter Clone
+  %ul.navbar-nav
+    - if user_signed_in?
+      %li.nav-item.dropdown
+        = link_to("#", id: "navbarDropdownMenuLink", class: "nav-link dropdown-toggle", "data-toggle": "dropdown", "data-flip": "true", "aria-haspopup": "false", "aria-expanded": "false") do
+          プロフィール画像
+        .dropdown-menu.dropdown-menu-right{"aria-labelledby": "navbarDropdownMenuLink", style: "position: absolute;right: 0;left: auto;"}
+          = link_to "プロフィール編集", '#', class: "dropdown-item"
+          = link_to "ログアウト", destroy_user_session_path, method: :delete, class: "dropdown-item"
+    - else
+      %li.nav-item
+        = link_to 'ログイン', new_session_path(resource_name)
+        = link_to 'サインアップ', new_registration_path(resource_name)
