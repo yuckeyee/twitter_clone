@@ -3,24 +3,12 @@
     .card
       %h5.card-header ユーザ情報
       .card-body
-        = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
-          = devise_error_messages!
-          .form-group
-            = f.label :name
-            = f.text_field :name, autofocus: true, autocomplete: "ユーザ名", class: "form-control"
-          .form-group
-            = f.label :avatar
+        = simple_form_for(resource, as: resource_name, url: :user_registration, html: { method: :put }) do |f|
+          = f.input :name, autofocus: true, autocomplete: "ユーザ名"
+          = f.input :avatar do
             = f.file_field :avatar, autofocus: true, autocomplete: "プロフィール画像", class: "form-control"
-          .form-group
-            = f.label :email
-            = f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control"
-          .form-group
-            = f.label :password
-            = f.password_field :password, autocomplete: "off", class: "form-control"
-          .form-group
-            = f.label :password_confirmation
-            = f.password_field :password_confirmation, autocomplete: "off", class: "form-control"
-          .form-group
-            = f.label :current_password
-            = f.password_field :current_password, autocomplete: "off", class: "form-control"
-          = f.submit "変更を保存", class: "btn btn-primary badge-pill"
+          = f.input :email, autofocus: true, autocomplete: "email"
+          = f.input :password, autocomplete: "off"
+          = f.input :password_confirmation, autocomplete: "off"
+          = f.input :current_password, autocomplete: "off"
+          = f.submit '変更を保存', :class => 'btn btn-primary badge-pill'
