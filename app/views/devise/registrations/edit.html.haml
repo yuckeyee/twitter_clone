@@ -4,10 +4,10 @@
       %h5.card-header ユーザ情報
       .card-body
         = simple_form_for(resource, as: resource_name, url: :user_registration, html: { method: :put }) do |f|
-          = f.input :name, autofocus: true, autocomplete: "ユーザ名"
+          = f.input :name
           = f.input :avatar do
-            = f.file_field :avatar, autofocus: true, autocomplete: "プロフィール画像", class: "form-control"
-          = f.input :email, autofocus: true, autocomplete: "email"
+            = f.file_field :avatar, class: "form-control"
+          = f.input :email
           = f.input :password, autocomplete: "off"
           = f.input :password_confirmation, autocomplete: "off"
           = f.input :current_password, autocomplete: "off"

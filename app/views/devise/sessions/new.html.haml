@@ -2,8 +2,8 @@
   .col-md-6.offset-md-3
     %h4 TwitterCloneにログイン
     = simple_form_for(resource, as: resource_name, url: :user_session) do |f|
-      = f.input :email, autofocus: true, autocomplete: "email"
-      = f.input :password, autofocus: true, autocomplete: "off"
+      = f.input :email
+      = f.input :password, autocomplete: "off"
       = f.submit 'ログイン', class:'btn btn-primary'
       - if devise_mapping.rememberable?
         = f.check_box :remember_me

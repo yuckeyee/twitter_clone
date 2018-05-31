@@ -2,7 +2,7 @@
   .col-md-6.offset-md-3
     %h4 TwitterCloneをはじめよう
     = simple_form_for(resource, as: resource_name, url: :user_registration) do |f|
-      = f.input :name, required: false, autofocus: true, autocomplete: "ユーザ名"
-      = f.input :email, autofocus: true, autocomplete: "email"
-      = f.input :password, autofocus: true, autocomplete: "off"
+      = f.input :name, required: false
+      = f.input :email
+      = f.input :password, autocomplete: "off"
       = f.submit 'アカウント作成', class: 'btn btn-primary badge-pill'
