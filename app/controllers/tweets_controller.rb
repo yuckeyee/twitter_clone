@@ -13,6 +13,12 @@ class TweetsController < ApplicationController
     redirect_to :root
   end
 
+  def destroy
+    @tweet = Tweet.find(params[:id])
+    @tweet.destroy
+    redirect_to root_path, flash: {success: '削除しました！'}
+  end
+
   private
 
   def tweet_params

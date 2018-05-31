@@ -13,11 +13,13 @@
               = image_tag tweet.user.avatar, class: "rounded-circle", style: "width: 50px;"
             - else
               = image_tag '/no_image.png', class: "rounded-circle", style: "width: 50px;"
-          .col-11.px-3
+          .col-10.px-3
             %p.my-1
-              %strong= "@#{tweet.user.name}"
+              %strong= "#{tweet.user.name}"
               ・
               %span.text-secondary
                 = time_ago_in_words(tweet.created_at)
                 前
             = tweet.content
+          .col-1.px-1
+            = link_to '削除', tweet, method: :delete, data: { confirm: '本当に削除しますか？' } 
