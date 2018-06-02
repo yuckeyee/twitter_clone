@@ -19,12 +19,12 @@ module TwitterClone
       g.stylesheets false
       g.javascripts false
       g.helper false
+      g.fixture_replacement :factory_bot, dir: "spec/factories"
       g.test_framework :rspec,
         routing_specs: false,
         controller_specs: false,
         view_specs: false,
-        helper_specs: false,
-        fixture: true
+        helper_specs: false
     end
   end
 end
