@@ -22,5 +22,6 @@
                   前
               = tweet.content
             .col-1.px-1
-              = link_to '削除', tweet, method: :delete, data: { confirm: '本当に削除しますか？' }
+              - if tweet.user_id == current_user.id
+                = link_to '削除', tweet, method: :delete, data: { confirm: '本当に削除しますか？' }
     = paginate @tweets
