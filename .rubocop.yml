@@ -1,0 +1,49 @@
+Rails:
+  Enabled: true
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Metrics/LineLength:
+  Max: 120
+
+Rails/HasAndBelongsToMany:
+  Enabled: false
+
+Style/Documentation:
+  Enabled: false
+
+Style/MultilineOperationIndentation:
+  EnforcedStyle: indented
+
+AsciiComments:
+  Enabled: false
+
+Style/ClassAndModuleChildren:
+  Enabled: false
+
+Metrics/MethodLength:
+  Max: 60
+
+Lint/UnusedMethodArgument:
+  Enabled: false
+
+AllCops:
+  Exclude:
+    - db/**/*
+    - bin/**/*
+    - vendor/**/*
+    - log/**/*
+    - public/**/*
+    - tmp/**/*
+    - assets/**/*
+    - lib/tasks/adhoc/*
+    - config/**/*
+    - coverage/**/*
+    - node_modules/**/*
+    - app/inputs/image_preview_input.rb
+    - Gemfile
+    - spec/**/*
+
+Metrics/CyclomaticComplexity:
+  Max: 10
