@@ -10,9 +10,9 @@
           .row
             .col-1.px-2
               - if tweet.user.avatar.attached?
-                = image_tag tweet.user.avatar, class: "rounded-circle"
+                = image_tag tweet.user.avatar, class: "rounded-circle-sm"
               - else
-                = image_tag '/no_image.png', class: "rounded-circle"
+                = image_tag '/no_image.png', class: "rounded-circle-sm"
             .col-10.px-3
               %p.my-1
                 %strong= "#{tweet.user.name}"
