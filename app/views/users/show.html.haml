@@ -1,0 +1,14 @@
+.row
+  .col-md-3.col-12.d-none.d-md-block
+    .card.p-2.border-light
+      - if @user.avatar.attached?
+        = image_tag @user.avatar, class: "mx-auto card-img-top rounded-circle-lg"
+      - else
+        = image_tag '/no_image.png', class: "mx-auto card-img-top rounded-circle-lg"
+      .card-body
+        %h4.card-title= "#{@user.name}"
+        %p.card-text
+          %span.text-secondary
+            あとで自己紹介カラム追加予定。。。。。。。
+  .col-md-6.col-12
+    = render partial: "tweets/tweet", collection: @tweets
