@@ -1,6 +1,6 @@
 class TweetsController < ApplicationController
   def index
-    @tweets = Tweet.order('created_at desc').page params[:page]
+    @tweets = Tweet.recent.page params[:page]
     @tweet = Tweet.new
   end
 
@@ -9,7 +9,7 @@ class TweetsController < ApplicationController
     if @tweet.save
       redirect_to :root, notice: '投稿しました'
     else
-      @tweets = Tweet.order('created_at desc').page params[:page]
+      @tweets = Tweet.recent.page params[:page]
       flash.now[:alert] = '投稿に失敗しました'
       render :index
     end
