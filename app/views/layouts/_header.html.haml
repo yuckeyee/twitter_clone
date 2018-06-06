@@ -1,8 +1,16 @@
-%nav.navbar.navbar-light.bg-light
-  %a.navbar-brand{href: "/"} Twitter Clone
-  %ul.navbar-nav
+%nav.navbar.navbar-expand-lg.navbar-light.bg-light
+  .navbar-brand
+    = link_to :root do
+      = fa_icon "home", text: "ホーム"
+  %button.navbar-toggler{"aria-controls" => "navbarText", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-target" => "#navbarText", "data-toggle" => "collapse", :type => "button"}
+    %span.navbar-toggler-icon
+  #navbarText.collapse.navbar-collapse
     - if user_signed_in?
-      %li.nav-item.dropdown
+      %ul.navbar-nav.mr-auto
+        %li.nav-item
+          = link_to root_path do
+            = fa_icon "users", text: "ユーザー"
+      .nav-item.dropdown
         = link_to("#", id: "navbarDropdownMenuLink", class: "nav-link dropdown-toggle", "data-toggle": "dropdown", "data-flip": "true", "aria-haspopup": "false", "aria-expanded": "false") do
           - if current_user.avatar.attached?
             = image_tag current_user.avatar, class: "rounded-circle-sm"
@@ -13,6 +21,8 @@
           = link_to "設定", :edit_user_registration, class: "dropdown-item"
           = link_to "ログアウト", :destroy_user_session, method: :delete, class: "dropdown-item"
     - else
-      %li.nav-item
-        = link_to 'ログイン', :new_user_session
-        = link_to 'サインアップ', :new_user_registration
+      %ul.navbar-nav.ml-auto
+        %li.nav-item.mr-1
+          = link_to 'ログイン', :new_user_session
+        %li.nav-item
+          = link_to 'サインアップ', :new_user_registration
