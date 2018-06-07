@@ -1,7 +1,7 @@
 class TweetsController < ApplicationController
   def index
     @tweets = Tweet.recent.page params[:page]
-    @tweet = Tweet.new
+    @tweet = current_user.tweets.build
   end
 
   def create
@@ -16,7 +16,7 @@ class TweetsController < ApplicationController
   end
 
   def destroy
-    @tweet = Tweet.find(params[:id])
+    @tweet = current_user.tweets.find(params[:id])
     @tweet.destroy
     redirect_to root_path, notice: '削除しました'
   end
