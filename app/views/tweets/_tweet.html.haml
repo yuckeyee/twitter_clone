@@ -1,10 +1,7 @@
 .list-group-item.list-group-item-action.flex-column.align-items-start
   .row
     .col-1.px-2
-      - if tweet.user.avatar.attached?
-        = image_tag tweet.user.avatar, class: "rounded-circle-sm"
-      - else
-        = image_tag '/no_image.png', class: "rounded-circle-sm"
+      = avatar_image(tweet.user)
     .col-10.px-3
       %p.my-1
         %strong

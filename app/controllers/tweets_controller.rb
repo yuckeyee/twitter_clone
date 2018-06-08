@@ -1,22 +1,24 @@
 class TweetsController < ApplicationController
   def index
-    @tweets = Tweet.order('created_at desc').page params[:page]
+    @tweets = Tweet.recent.page params[:page]
+    @tweet = current_user.tweets.build
   end
 
   def create
-    if current_user.tweets.create(tweet_params)
-      flash[:notice] = '投稿しました'
+    @tweet = current_user.tweets.build(tweet_params)
+    if @tweet.save
+      redirect_to :root, notice: '投稿しました'
     else
-      flash[:error] = '投稿に失敗しました'
+      @tweets = Tweet.recent.page params[:page]
+      flash.now[:alert] = '投稿に失敗しました'
+      render :index
     end
-
-    redirect_to :root
   end
 
   def destroy
-    @tweet = Tweet.find(params[:id])
+    @tweet = current_user.tweets.find(params[:id])
     @tweet.destroy
-    redirect_to root_path, flash: { success: '削除しました！' }
+    redirect_to root_path, notice: '削除しました'
   end
 
   private

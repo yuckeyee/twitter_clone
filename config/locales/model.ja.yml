@@ -12,6 +12,8 @@ ja:
         password: "パスワード"
         password_confirmation: "確認用パスワード"
         remember_me: "保存する"
+      tweet:
+        content: "投稿"
   errors:
       messages:
         invalid: "が不正な値です。"
