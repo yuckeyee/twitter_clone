@@ -12,7 +12,7 @@
             = fa_icon "users", text: "ユーザー"
       .nav-item.dropdown
         = link_to("#", id: "navbarDropdownMenuLink", class: "nav-link dropdown-toggle", "data-toggle": "dropdown", "data-flip": "true", "aria-haspopup": "false", "aria-expanded": "false") do
-          = avatar_image(current_user)
+          = avatar_image(current_user, 'rounded-circle-sm')
         .dropdown-menu.dropdown-menu-right{"aria-labelledby": "navbarDropdownMenuLink", style: "position: absolute;right: 0;left: auto;"}
           = link_to "プロフィール", current_user, class: "dropdown-item"
           = link_to "設定", :edit_user_registration, class: "dropdown-item"
