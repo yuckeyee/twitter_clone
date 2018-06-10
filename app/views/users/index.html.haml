@@ -1,0 +1,18 @@
+.row
+  .col-md-6.offset-md-3
+    .list-group
+      .list-group-item.list-group-item-action.flex-column.align-items-start
+        %h4.mb-1 おすすめユーザー
+        %p.mb-1 以下のおすすめユーザーをフォローしてみましょう。
+      - @users.each do |user|
+        .list-group-item.list-group-item-action.flex-column.align-items-start
+          .row
+            .col-1.px-2
+              = avatar_image(user, 'rounded-circle-sm')
+            .col-8.px-3
+              %p.my-1
+                %strong
+                  = link_to "#{user.name}", user
+              自己紹介文自己紹介文自己紹介文自己紹介文自己紹介文自己紹介文自己紹介文自己紹介文自己紹介文自己紹介文
+            .col-3.px-1
+              = link_to 'フォローする', '#', class: 'btn btn-outline-primary badge-pill'
