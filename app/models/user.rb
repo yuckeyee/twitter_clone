@@ -4,4 +4,12 @@ class User < ApplicationRecord
   validates :name, presence: true, uniqueness: { case_sensitive: false }
   has_one_attached :avatar
   has_many :tweets, dependent: :destroy
+
+  def self.search(name)
+    if name
+      User.where(['name LIKE ?', "%#{name}%"])
+    else
+      User.all
+    end
+  end
 end
