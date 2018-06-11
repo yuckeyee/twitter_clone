@@ -20,6 +20,6 @@
               %p.my-1
                 %strong
                   = link_to "#{user.name}", user
-              自己紹介文自己紹介文自己紹介文自己紹介文自己紹介文自己紹介文自己紹介文自己紹介文自己紹介文自己紹介文
+              = user.profile
             .col-3.px-1
               = link_to 'フォローする', '#', class: 'btn btn-outline-primary badge-pill'

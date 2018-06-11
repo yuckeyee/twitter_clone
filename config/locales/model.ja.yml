@@ -8,6 +8,7 @@ ja:
         avatar: "プロフィール画像"
         title: "タイトル"
         email: "メールアドレス"
+        profile: "プロフィール"
         current_password: "現在のパスワード"
         password: "パスワード"
         password_confirmation: "確認用パスワード"
