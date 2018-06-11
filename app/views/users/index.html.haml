@@ -8,7 +8,7 @@
         = form_with url: :search, method: :get, local: true do |f|
           .form-group.row
             .col-md-9
-              = f.text_field :name, class: 'form-control'
+              = f.text_field :search, class: 'form-control'
             .col-md-3.pl-0
               = f.submit 'キーワード検索', class: 'btn btn-primary badge-pill', name: nil
       - @users.each do |user|

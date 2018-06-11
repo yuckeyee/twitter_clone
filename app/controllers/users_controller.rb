@@ -10,7 +10,7 @@ class UsersController < ApplicationController
   end
 
   def search
-    @users = User.search(params[:name])
+    @users = User.search(params[:search])
     render action: :index
   end
 end

@@ -5,9 +5,9 @@ class User < ApplicationRecord
   has_one_attached :avatar
   has_many :tweets, dependent: :destroy
 
-  def self.search(name)
-    if name
-      User.where(['name LIKE ?', "%#{name}%"])
+  def self.search(search)
+    if search
+      User.where(['name LIKE ?', "%#{search}%"]).or(User.where(['profile LIKE ?', "%#{search}%"]))
     else
       User.all
     end
