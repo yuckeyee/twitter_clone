@@ -8,7 +8,7 @@ class User < ApplicationRecord
   scope :recent, -> { order('created_at desc') }
 
   def self.search(search)
-    if search
+    if search.present?
       User.where(['name LIKE ?', "%#{search}%"]).or(User.where(['profile LIKE ?', "%#{search}%"]))
     else
       User.all
