@@ -5,6 +5,8 @@ class User < ApplicationRecord
   has_one_attached :avatar
   has_many :tweets, dependent: :destroy
 
+  scope :recent, -> { order('created_at desc') }
+
   def self.search(search)
     if search
       User.where(['name LIKE ?', "%#{search}%"]).or(User.where(['profile LIKE ?', "%#{search}%"]))

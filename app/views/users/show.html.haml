@@ -1,7 +1,7 @@
 .row
   .col-md-3.col-12.d-none.d-md-block
     .card.p-2.border-light
-      = avatar_image(current_user, 'mx-auto card-img-top rounded-circle-lg')
+      = avatar_image(@user, 'mx-auto card-img-top rounded-circle-lg')
       .card-body
         %h4.card-title= "#{@user.name}"
         %p.card-text
