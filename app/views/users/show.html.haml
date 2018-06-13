@@ -9,3 +9,4 @@
             = @user.profile
   .col-md-6.col-12
     = render partial: "tweets/tweet", collection: @tweets
+    = paginate @tweets
