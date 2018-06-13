@@ -24,4 +24,14 @@ RSpec.feature "Users", type: :feature do
     click_button "キーワード検索"
     expect(page).to have_selector('.list-group-item', count: 4)
   end
+
+  scenario "visit user show" do
+    user = create(:user)
+    login_as user, scope: :user
+
+    create_list(:tweet, 3, user: user)
+    visit users_path(user)
+
+    expect(page).to have_selector('.list-group-item', count: 3)
+  end
 end
