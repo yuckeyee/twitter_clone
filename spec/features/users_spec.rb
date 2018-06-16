@@ -20,7 +20,7 @@ RSpec.feature "Users", type: :feature do
     create(:user, name: 'John', profile: 'John')
     visit users_path
 
-    fill_in "search", with: 'Bob'
+    fill_in "keyword", with: 'Bob'
     click_button "キーワード検索"
     expect(page).to have_selector('.list-group-item', count: 4)
   end

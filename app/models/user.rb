@@ -6,12 +6,10 @@ class User < ApplicationRecord
   has_many :tweets, dependent: :destroy
 
   scope :recent, -> { order('created_at desc') }
-
-  def self.search(search)
-    if search.present?
-      User.where(['name LIKE ?', "%#{search}%"]).or(User.where(['profile LIKE ?', "%#{search}%"]))
-    else
-      User.all
+  scope :search, ->(keyword) {
+    if keyword.present?
+      where('name LIKE :keyword OR profile LIKE :keyword',
+            keyword: "%#{sanitize_sql_like(keyword)}%")
     end
-  end
+  }
 end
