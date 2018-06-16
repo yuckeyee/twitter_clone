@@ -1,7 +1,7 @@
 require 'rails_helper'
 
-RSpec.feature "Users", type: :feature do
-  scenario "visit user index" do
+RSpec.feature 'Users', type: :feature do
+  scenario 'visit user index' do
     user = create(:user)
     login_as user, scope: :user
 
@@ -11,7 +11,7 @@ RSpec.feature "Users", type: :feature do
     expect(page).to have_selector('.list-group-item', count: 8)
   end
 
-  scenario "search users" do
+  scenario 'search users' do
     user = create(:user)
     login_as user, scope: :user
 
@@ -20,12 +20,12 @@ RSpec.feature "Users", type: :feature do
     create(:user, name: 'John', profile: 'John')
     visit users_path
 
-    fill_in "keyword", with: 'Bob'
-    click_button "キーワード検索"
+    fill_in 'keyword', with: 'Bob'
+    click_button 'キーワード検索'
     expect(page).to have_selector('.list-group-item', count: 4)
   end
 
-  scenario "visit user show" do
+  scenario 'visit user show' do
     user = create(:user)
     login_as user, scope: :user
 

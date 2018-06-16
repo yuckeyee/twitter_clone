@@ -3,7 +3,7 @@
     .list-group
       .list-group-item.list-group-item-action.flex-column.align-items-start.list-group-item-primary
         = simple_form_for @tweet do |f|
-          = f.input :content, label: false, placeholder: "いまどうしてる？"
+          = f.input :content, label: false, placeholder: 'いまどうしてる？'
           = f.submit 'ツイート', class: "btn btn-primary badge-pill float-right"
-      = render partial: "tweet", collection: @tweets
+      = render partial: 'tweet', collection: @tweets
     = paginate @tweets
