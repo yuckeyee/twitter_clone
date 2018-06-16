@@ -1,10 +1,10 @@
 .row
   .col-md-6.offset-md-3
     .list-group
-      .list-group-item.list-group-item-action.flex-column.align-items-start
+      .list-group-item.flex-column.align-items-start
         %h4.mb-1 おすすめユーザー
         %p.mb-1 以下のおすすめユーザーをフォローしてみましょう。
-      .list-group-item.list-group-item-action.flex-column.align-items-start.list-group-item-secondary
+      .list-group-item.flex-column.align-items-start.list-group-item-secondary
         = form_with url: :users, method: :get, local: true do |f|
           .form-group.row
             .col-md-9

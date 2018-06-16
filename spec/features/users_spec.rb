@@ -8,7 +8,7 @@ RSpec.feature 'Users', type: :feature do
     create_list(:user, 5)
     visit users_path
 
-    expect(page).to have_selector('.list-group-item', count: 8)
+    expect(page).to have_selector('.list-group-item-action', count: 6)
   end
 
   scenario 'search users' do
@@ -22,7 +22,7 @@ RSpec.feature 'Users', type: :feature do
 
     fill_in 'keyword', with: 'Bob'
     click_button 'キーワード検索'
-    expect(page).to have_selector('.list-group-item', count: 4)
+    expect(page).to have_selector('.list-group-item-action', count: 2)
   end
 
   scenario 'visit user show' do
