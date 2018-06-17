@@ -1,0 +1,23 @@
+.card.p-2.border-light
+  = avatar_image(user, 'mx-auto card-img-top rounded-circle-lg')
+  .card-body
+    %h4.card-title= "#{user.name}"
+    %table.table.table-borderless.table-sm
+      %thead
+        %tr
+          %td
+            %small ツイート
+          %td
+            %small フォロー
+          %td
+            %small フォロワー
+      %tbody
+        %tr
+          %td= user.tweets.count
+          %td= user.following.count
+          %td= user.followers.count
+    %p.card-text
+      %span.text-secondary
+        = user.profile
+    - if user.id != current_user.id
+      %button.btn.btn-primary.btn-lg.btn-block{:type => "button"} Block level button

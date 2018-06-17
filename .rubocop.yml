@@ -4,6 +4,9 @@ Rails:
 Style/FrozenStringLiteralComment:
   Enabled: false
 
+Rails/InverseOf:
+  Enabled: false
+
 Style/Lambda:
   Enabled: false
 
