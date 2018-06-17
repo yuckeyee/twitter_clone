@@ -4,8 +4,8 @@ class User < ApplicationRecord
   validates :name, presence: true, uniqueness: { case_sensitive: false }
   has_one_attached :avatar
   has_many :tweets, dependent: :destroy
-  has_many :active_relationships, class_name: 'Relationship', foreign_key: 'follower_id',
-                                  dependent: :destroy, inverse_of: :active_relationships
+  has_many :active_relationships, class_name: 'Relationship', foreign_key: 'follower_id', dependent: :destroy
+  has_many :following, through: :active_relationships, source: :followed
 
   scope :recent, -> { order('created_at desc') }
   scope :search, ->(keyword) {
@@ -14,4 +14,16 @@ class User < ApplicationRecord
             keyword: "%#{sanitize_sql_like(keyword)}%")
     end
   }
+
+  def follow(other_user)
+    self.active_relationships.create(followed_id: other_user.id)
+  end
+
+  def unfollow(other_user)
+    self.active_relationships.find_by(followed_id: other_user.id).destroy
+  end
+
+  def following?(other_user)
+    self.following.include?(other_user)
+  end
 end

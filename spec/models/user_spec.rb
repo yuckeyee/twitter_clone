@@ -53,4 +53,29 @@ RSpec.describe User, type: :model do
       end
     end
   end
+
+  describe '#follow, #unfollow, #following?' do
+    let!(:user1) {
+      create(:user)
+    }
+    let!(:user2) {
+      create(:user)
+    }
+
+    context 'when user1 follow user2' do
+      it 'returns true that use following? method' do
+        user1.follow(user2)
+        expect(user1.following?(user2)).to be true
+      end
+    end
+
+    context 'when user1 unfollow user2' do
+      it 'returns false that use following? method' do
+        user1.follow(user2)
+        user1.unfollow(user2)
+        expect(user1.following?(user2)).to be false
+      end
+    end
+  end
+
 end
