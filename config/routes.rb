@@ -7,4 +7,5 @@ Rails.application.routes.draw do
     end
   end
   resources :tweets, only: %i(create destroy)
+  resources :relationships, only: %i(create destroy)
 end
