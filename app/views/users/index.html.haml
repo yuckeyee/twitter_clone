@@ -1,0 +1,24 @@
+.row
+  .col-md-6.offset-md-3
+    .list-group
+      .list-group-item.flex-column.align-items-start
+        %h4.mb-1 おすすめユーザー
+        %p.mb-1 以下のおすすめユーザーをフォローしてみましょう。
+      .list-group-item.flex-column.align-items-start.list-group-item-secondary
+        = form_with url: :users, method: :get, local: true do |f|
+          .form-group.row
+            .col-md-9
+              = f.text_field :keyword, class: 'form-control'
+            .col-md-3.pl-0
+              = f.submit 'キーワード検索', class: 'btn btn-primary badge-pill', name: nil
+      - @users.each do |user|
+        .list-group-item.list-group-item-action.flex-column.align-items-start
+          .row
+            .col-1.px-2
+              = avatar_image(user, 'rounded-circle-sm')
+            .col-8.px-3
+              %p.my-1
+                %strong
+                  = link_to "#{user.name}", user
+              = user.profile
+    = paginate @users

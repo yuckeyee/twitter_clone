@@ -3,22 +3,7 @@
     .list-group
       .list-group-item.list-group-item-action.flex-column.align-items-start.list-group-item-primary
         = simple_form_for @tweet do |f|
-          = f.input :content, label: false, placeholder: "いまどうしてる？"
+          = f.input :content, label: false, placeholder: 'いまどうしてる？'
           = f.submit 'ツイート', class: "btn btn-primary badge-pill float-right"
-      - @tweets.each do |tweet|
-        .list-group-item.list-group-item-action.flex-column.align-items-start
-          .row
-            .col-1.px-2
-              = avatar_image(tweet.user)
-            .col-10.px-3
-              %p.my-1
-                %strong= "#{tweet.user.name}"
-                ・
-                %span.text-secondary
-                  = time_ago_in_words(tweet.created_at)
-                  前
-              = tweet.content
-            .col-1.px-1
-              - if tweet.user_id == current_user.id
-                = link_to '削除', tweet, method: :delete, data: { confirm: '本当に削除しますか？' }
+      = render partial: 'tweet', collection: @tweets
     = paginate @tweets

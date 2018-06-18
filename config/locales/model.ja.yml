@@ -8,6 +8,7 @@ ja:
         avatar: "プロフィール画像"
         title: "タイトル"
         email: "メールアドレス"
+        profile: "プロフィール"
         current_password: "現在のパスワード"
         password: "パスワード"
         password_confirmation: "確認用パスワード"
@@ -33,3 +34,4 @@ ja:
         equal_to: "は%{count}を指定してください。"
         less_than: "は%{count}より小さい値を指定してください。"
         less_than_or_equal_to: "は%{count}以下の値を指定してください。"
+        record_invalid: "バリデーションに失敗しました。 %{errors}"

@@ -1,0 +1,16 @@
+.list-group-item.list-group-item-action.flex-column.align-items-start
+  .row
+    .col-1.px-2
+      = avatar_image(tweet.user, 'rounded-circle-sm')
+    .col-10.px-3
+      %p.my-1
+        %strong
+          = link_to "#{tweet.user.name}", tweet.user
+        ・
+        %span.text-secondary
+          = time_ago_in_words(tweet.created_at)
+          前
+      = tweet.content
+    .col-1.px-1
+      - if tweet.user_id == current_user.id
+        = link_to '削除', tweet, method: :delete, data: { confirm: '本当に削除しますか？' }

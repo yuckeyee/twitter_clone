@@ -4,8 +4,11 @@ Rails:
 Style/FrozenStringLiteralComment:
   Enabled: false
 
+Style/Lambda:
+  Enabled: false
+
 Metrics/LineLength:
-  Max: 120
+  Max: 150
 
 Rails/HasAndBelongsToMany:
   Enabled: false
