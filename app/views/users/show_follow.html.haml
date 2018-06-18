@@ -14,5 +14,5 @@
                   = link_to "#{user.name}", user
               = user.profile
             .col-3.px-1
-              = link_to 'フォローする', '#', class: 'btn btn-outline-primary badge-pill'
+              = render partial: 'follow_form', locals: {user: user}
     = paginate @users
