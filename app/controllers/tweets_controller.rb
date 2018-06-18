@@ -18,7 +18,7 @@ class TweetsController < ApplicationController
   def destroy
     @tweet = current_user.tweets.find(params[:id])
     @tweet.destroy
-    redirect_to request.referer || :root, notice: '削除しました'
+    redirect_to request.referer, notice: '削除しました'
   end
 
   private
