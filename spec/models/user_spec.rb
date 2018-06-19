@@ -1,6 +1,15 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
+  let!(:user1) {
+    create(:user, name: 'Bob', profile: 'first')
+  }
+  let!(:user2) {
+    create(:user, name: 'John', profile: 'second')
+  }
+  let!(:user3) {
+    create(:user, name: 'Alisa', profile: 'third')
+  }
 
   it 'is valid with a name' do
     expect(build(:user)).to be_valid
@@ -19,16 +28,6 @@ RSpec.describe User, type: :model do
   end
 
   describe 'search users by a keyword' do
-    let!(:user1) {
-      create(:user, name: 'Bob', profile: 'first')
-    }
-    let!(:user2) {
-      create(:user, name: 'John', profile: 'second')
-    }
-    let!(:user3) {
-      create(:user, name: 'Alisa', profile: 'third')
-    }
-
     context 'when a match is found' do
       it 'returns users that match the search name' do
         expect(User.search('Bob')).to include(user1)
@@ -55,13 +54,6 @@ RSpec.describe User, type: :model do
   end
 
   describe '#follow, #unfollow, #following?' do
-    let!(:user1) {
-      create(:user)
-    }
-    let!(:user2) {
-      create(:user)
-    }
-
     context 'when user1 follow user2' do
       it 'returns true that use following? method' do
         user1.follow(user2)
@@ -80,4 +72,30 @@ RSpec.describe User, type: :model do
     end
   end
 
+  describe '#feed' do
+    let!(:tweet1) {
+      create(:tweet, user: user1)
+    }
+    let!(:tweet2) {
+      create(:tweet, user: user2)
+    }
+    let!(:tweet3) {
+      create(:tweet, user: user3)
+    }
+
+    context 'when user1 follow user2' do
+      it 'user1 feed contain user2 tweet' do
+        user1.follow(user2)
+        expect(user1.feed.include?(tweet2)).to be true
+      end
+      it 'user1 feed contain myself tweet' do
+        user1.follow(user2)
+        expect(user1.feed.include?(tweet1)).to be true
+      end
+      it 'user1 feed not contain user3 tweet' do
+        user1.follow(user2)
+        expect(user1.feed.include?(tweet3)).to be false
+      end
+    end
+  end
 end

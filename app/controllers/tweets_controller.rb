@@ -1,6 +1,6 @@
 class TweetsController < ApplicationController
   def index
-    @tweets = Tweet.recent.page params[:page]
+    @tweets = current_user.feed.recent.page params[:page]
     @tweet = current_user.tweets.build
   end
 
