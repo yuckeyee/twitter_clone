@@ -1,6 +1,6 @@
 .row
   .col-md-4.col-12.d-none.d-md-block
-    = render partial: 'layouts/user_info', locals: {user: @user}
+    = render partial: 'layouts/user_info', locals: { user: @user }
   .col-md-6.col-12
     = render partial: 'tweets/tweet', collection: @tweets
     = paginate @tweets
