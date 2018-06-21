@@ -56,7 +56,7 @@ RSpec.describe User, type: :model do
   describe '#follow, #unfollow, #following?' do
     context 'when user1 follow user2' do
       it 'returns true that use following? method' do
-        user1.follow(user2)
+        user1.follow!(user2)
         expect(user1.following?(user2)).to be true
         expect(user2.followers.include?(user1)).to be true
       end
@@ -64,8 +64,8 @@ RSpec.describe User, type: :model do
 
     context 'when user1 unfollow user2' do
       it 'returns false that use following? method' do
-        user1.follow(user2)
-        user1.unfollow(user2)
+        user1.follow!(user2)
+        user1.unfollow!(user2)
         expect(user1.following?(user2)).to be false
         expect(user2.followers.include?(user1)).to be false
       end
@@ -85,15 +85,15 @@ RSpec.describe User, type: :model do
 
     context 'when user1 follow user2' do
       it 'user1 feed contain user2 tweet' do
-        user1.follow(user2)
+        user1.follow!(user2)
         expect(user1.feed.include?(tweet2)).to be true
       end
       it 'user1 feed contain myself tweet' do
-        user1.follow(user2)
+        user1.follow!(user2)
         expect(user1.feed.include?(tweet1)).to be true
       end
       it 'user1 feed not contain user3 tweet' do
-        user1.follow(user2)
+        user1.follow!(user2)
         expect(user1.feed.include?(tweet3)).to be false
       end
     end

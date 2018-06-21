@@ -47,7 +47,7 @@ RSpec.feature 'Tweets', type: :feature do
     create(:tweet, content: 'user2', user: user2)
     user3 = create(:user)
     create(:tweet, content: 'user3', user: user3)
-    user.follow(user2)
+    user.follow!(user2)
     login_as user, scope: :user
     visit root_path
 
