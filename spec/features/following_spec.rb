@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.feature "Following", type: :feature do
-  scenario 'user toggles a follow in user index page' do
+  scenario 'user toggles a follow in user index page', js: true do
     user = create(:user)
     user2 = create(:user)
     login_as user, scope: :user
@@ -16,7 +16,7 @@ RSpec.feature "Following", type: :feature do
     expect(user.following?(user2)).to be false
   end
 
-  scenario 'user toggles a follow in user show page' do
+  scenario 'user toggles a follow in user show page', js: true do
     user = create(:user)
     user2 = create(:user)
     login_as user, scope: :user
