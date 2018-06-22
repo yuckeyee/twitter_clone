@@ -1,0 +1,22 @@
+.card.p-2.border-light
+  = avatar_image(user, 'mx-auto card-img-top rounded-circle-lg')
+  .card-body
+    %h4.card-title= "#{user.name}"
+    %table.table.table-borderless.table-sm
+      %thead
+        %tr
+          %td
+            %small ツイート
+          %td
+            %small フォロー
+          %td
+            %small フォロワー
+      %tbody
+        %tr
+          %td= link_to user.tweets.count, user
+          %td= link_to user.following.count, [ :following, user ]
+          %td= link_to user.followers.count, [ :followers, user ]
+    %p.card-text
+      %span.text-secondary
+        = user.profile
+    = render partial: 'users/follow_form', locals: { user: user }

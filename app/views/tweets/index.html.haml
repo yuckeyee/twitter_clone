@@ -1,5 +1,7 @@
 .row
-  .col-md-6.offset-md-3
+  .col-md-4
+    = render partial: 'layouts/user_info', locals: { user: current_user }
+  .col-md-6
     .list-group
       .list-group-item.list-group-item-action.flex-column.align-items-start.list-group-item-primary
         = simple_form_for @tweet do |f|

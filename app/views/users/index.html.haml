@@ -1,5 +1,7 @@
 .row
-  .col-md-6.offset-md-3
+  .col-md-4
+    = render partial: 'layouts/user_info', locals: { user: current_user }
+  .col-md-6
     .list-group
       .list-group-item.flex-column.align-items-start
         %h4.mb-1 おすすめユーザー
@@ -21,4 +23,6 @@
                 %strong
                   = link_to "#{user.name}", user
               = user.profile
+            .col-3.px-1
+              = render partial: 'follow_form', locals: { user: user }
     = paginate @users

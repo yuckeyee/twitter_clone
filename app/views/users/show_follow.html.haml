@@ -1,0 +1,18 @@
+.row
+  .col-md-4
+    = render partial: 'layouts/user_info', locals: { user: @user }
+  .col-md-6
+    .list-group
+      - @users.each do |user|
+        .list-group-item.list-group-item-action.flex-column.align-items-start
+          .row
+            .col-1.px-2
+              = avatar_image(user, 'rounded-circle-sm')
+            .col-8.px-3
+              %p.my-1
+                %strong
+                  = link_to "#{user.name}", user
+              = user.profile
+            .col-3.px-1
+              = render partial: 'follow_form', locals: { user: user }
+    = paginate @users

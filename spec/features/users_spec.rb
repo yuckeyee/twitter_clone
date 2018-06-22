@@ -1,8 +1,9 @@
 require 'rails_helper'
 
 RSpec.feature 'Users', type: :feature do
+  let(:user) { create(:user) }
+
   scenario 'visit user index' do
-    user = create(:user)
     login_as user, scope: :user
 
     create_list(:user, 5)
@@ -12,7 +13,6 @@ RSpec.feature 'Users', type: :feature do
   end
 
   scenario 'search users' do
-    user = create(:user)
     login_as user, scope: :user
 
     create(:user, name: 'Bob')
@@ -26,7 +26,6 @@ RSpec.feature 'Users', type: :feature do
   end
 
   scenario 'visit user show' do
-    user = create(:user)
     login_as user, scope: :user
 
     create_list(:tweet, 3, user: user)
