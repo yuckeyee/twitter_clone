@@ -1,10 +1,11 @@
 require 'rails_helper'
 
 RSpec.feature 'Tweets', type: :feature do
+  let(:user) { create(:user) }
+  let(:user2) { create(:user) }
+  let(:user3) { create(:user) }
 
   scenario 'user creates a new tweet' do
-    user = create(:user)
-
     login_as user, scope: :user
     visit root_path
 
@@ -16,8 +17,6 @@ RSpec.feature 'Tweets', type: :feature do
   end
 
   scenario 'user can not creates a new tweet without content' do
-    user = create(:user)
-
     login_as user, scope: :user
     visit root_path
 
@@ -27,10 +26,8 @@ RSpec.feature 'Tweets', type: :feature do
     }.not_to change(user.tweets, :count)
   end
 
-  scenario 'user delete a new tweet' do
-    user = create(:user)
+  scenario 'user delete a tweet' do
     create(:tweet, user: user)
-
     login_as user, scope: :user
     visit root_path
 
@@ -41,11 +38,8 @@ RSpec.feature 'Tweets', type: :feature do
   end
 
   scenario 'feed on root' do
-    user = create(:user)
     create(:tweet, content: 'user', user: user)
-    user2 = create(:user)
     create(:tweet, content: 'user2', user: user2)
-    user3 = create(:user)
     create(:tweet, content: 'user3', user: user3)
     user.follow!(user2)
     login_as user, scope: :user
